@@ -2,7 +2,7 @@
 #include "ui_dexopener.h"
 
 DexOpener::DexOpener(QWidget *parent) :
-    QWidget(parent, Qt::Window),
+    QWidget(parent, Qt::Dialog),
     ui(new Ui::DexOpener)
 {
     ui->setupUi(this);

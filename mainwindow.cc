@@ -17,6 +17,8 @@ MainWindow::MainWindow(QWidget *parent) :
         qDebug() << e.what();
     }
 
+    auto meme = new DexOpener(this);
+    meme->show();
 }
 
 MainWindow::~MainWindow()

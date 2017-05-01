@@ -2,6 +2,7 @@
 #define DEX_H
 
 #include <cstdint>
+#include <string>
 
 #include "exceptions/dexception.h"
 
@@ -21,6 +22,8 @@ namespace dex {
         REVERSE_ENDIAN_CONSTANT = 0x78563412
     };
 
+    std::string endian_tag_to_string(const EndianTag tag);
+
     struct DexHeader {
         uint8_t magic[DEX_MAGIC_SIZE];
         uint32_t checksum; // adler32
@@ -28,11 +31,30 @@ namespace dex {
         uint32_t file_size;
         uint32_t header_size; // DEX_HEADER_SIZE
         EndianTag endian_tag;
+
         uint32_t link_size;
         uint32_t link_offset;
         uint32_t map_offset;
         uint32_t strings_ids_size;
         uint32_t strings_ids_offset;
+
+        uint32_t type_ids_size;
+        uint32_t type_ids_offset;
+
+        uint32_t proto_ids_size; // <= 65535
+        uint32_t proto_ids_offset;
+
+        uint32_t field_ids_size;
+        uint32_t field_ids_offset;
+
+        uint32_t method_ids_size;
+        uint32_t method_ids_offset;
+
+        uint32_t class_defs_size;
+        uint32_t class_defs_offset;
+
+        uint32_t data_size;
+        uint32_t data_offset;
 
         // TODO: finish
 

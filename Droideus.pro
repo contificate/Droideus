@@ -23,12 +23,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 
+RESOURCES += res/qdarkstyle/style.qrc
+
 SOURCES +=\
         mainwindow.cc \
     readers/dexreader.cc \
     readers/formats/dexfile.cc \
     main.cc \
-    ui/dexopener.cc
+    ui/dexopener.cc \
+    readers/formats/dex.cc
 
 HEADERS  += mainwindow.h \
     readers/dexreader.h \

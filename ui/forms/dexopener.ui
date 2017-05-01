@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>299</width>
-    <height>265</height>
+    <width>287</width>
+    <height>308</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,7 +30,16 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="dexName">
+      <widget class="QLineEdit" name="txtFileLocation">
+       <property name="inputMask">
+        <string/>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="maxLength">
+        <number>32767</number>
+       </property>
        <property name="readOnly">
         <bool>true</bool>
        </property>
@@ -63,23 +72,79 @@
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QLabel" name="label_5">
+        <widget class="QLabel" name="lblFilesize">
          <property name="text">
-          <string>TextLabel</string>
+          <string>0</string>
          </property>
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QLabel" name="label_6">
+        <widget class="QLabel" name="lblEndianness">
          <property name="text">
-          <string>TextLabel</string>
+          <string/>
          </property>
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QCheckBox" name="checkBox">
+        <widget class="QCheckBox" name="chkLinked">
          <property name="text">
           <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>Link  offset:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLabel" name="lblLinkOffset">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_9">
+         <property name="text">
+          <string>Map offset:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLabel" name="lblMapOffset">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_11">
+         <property name="text">
+          <string>Data size:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLabel" name="lblDataSize">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_13">
+         <property name="text">
+          <string>Data offset:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QLabel" name="lblDataOffset">
+         <property name="text">
+          <string>0</string>
          </property>
         </widget>
        </item>
@@ -120,14 +185,14 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="btnCancel">
          <property name="text">
           <string>Cancel</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="openDex">
+        <widget class="QPushButton" name="btnOpen">
          <property name="text">
           <string>Open</string>
          </property>

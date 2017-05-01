@@ -14,8 +14,9 @@ std::unique_ptr<DexHeader> DexReader::readHeader()
 {
     auto header = std::make_unique<DexHeader>();
 
-    // read magic
     seek(0);
+
+    // read magic
     ifs_.read(reinterpret_cast<char *>(header->magic), DEX_MAGIC_SIZE);
 
     // compare magic
@@ -26,24 +27,21 @@ std::unique_ptr<DexHeader> DexReader::readHeader()
         throw Dexception(reinterpret_cast<const char*>(header->magic));
     }
 
-    // read checksum
+    // read checksum (adler32 of everything by magic and this field)
     header->checksum = read<uint32_t>();
 
     // read file signature
     ifs_.read(reinterpret_cast<char *>(header->signature), DEX_SIGNATURE_SIZE);
 
-    header->file_size = read<uint32_t>();
-    assert((header->header_size = read<uint32_t>()) == DEX_HEADER_SIZE);
-
-    header->endian_tag = static_cast<EndianTag>(read<uint32_t>());
-
-    header->link_size = read<uint32_t>();
-    header->link_offset = read<uint32_t>();
-    header->map_offset = read<uint32_t>();
-    header->strings_ids_size = read<uint32_t>();
-    header->strings_ids_offset = read<uint32_t>();
-
-    return header;
+    // the rest of the header is heterogeneous (20 final members)
+    uint32_t* latter = &(header.get())->file_size;
+    for(auto i = 0; i < 20; i++)
+        *(latter + i) = read<uint32_t>();
+    
+    // general assertions
+    assert(header->proto_ids_size <= 0xffff);
+	
+	return header;
 }
 
 void DexReader::seek(const std::streampos offset)
